@@ -1,16 +1,302 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.min.css" integrity="sha512-q6WgHqiHlKyOqslT/lgBgodhd03Wp4BEqKeW6nNtlOY4quzyG3VoQKFrieaCeSnuVseNKRGpGeDU3qPmabCANg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../assets/css/reset.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../assets/css/style.css">
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.min.css"
+      integrity="sha512-q6WgHqiHlKyOqslT/lgBgodhd03Wp4BEqKeW6nNtlOY4quzyG3VoQKFrieaCeSnuVseNKRGpGeDU3qPmabCANg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="../assets/css/reset.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__container container">
+        <a href="/">
+          <svg class="header__logo" width="56" height="68">
+            <use href="../assets/icon/symbol-defs.svg#icon-logo"></use>
+          </svg>
+        </a>
+        <nav class="nav">
+          <ul class="header__nav__menu">
+            <li class="header__nav__item">
+              <a href="./catalog.html" class="header__nav__link">SHOP</a>
+            </li>
+            <li class="header__nav__item">
+              <a href="./about-us.html" class="header__nav__link">ABOUT</a>
+            </li>
+          </ul>
+        </nav>
+        <ul class="header__list">
+          <li class="header__item">
+            <a id="searchBtn" href="#">
+              <svg class="header__svg" width="24" height="24">
+                <use href="../assets/icon/symbol-defs.svg#icon-search"></use>
+              </svg>
+            </a>
+            <div id="searchOverlay" class="search__overlay">
+              <div class="search__header">
+                <div class="search-input-wrapper">
+                  <svg class="header__svg" width="24" height="24">
+                    <use
+                      href="../assets/icon/symbol-defs.svg#icon-search"
+                    ></use>
+                  </svg>
+                  <input
+                    id="searchInput"
+                    placeholder="Search..."
+                    autocomplete="off"
+                    type="text"
+                  />
+                </div>
+                <button id="closeSearch" class="search__close">
+                  <svg class="header__svg" width="24" height="24">
+                    <use href="../assets/icon/symbol-defs.svg#icon-cross"></use>
+                  </svg>
+                </button>
+              </div>
+              <ul id="searchResults" class="small-shop-section__list"></ul>
+            </div>
+          </li>
+          <li class="header__item">
+            <a href="./account.html">
+              <svg class="header__svg" width="24" height="24">
+                <use href="../assets/icon/symbol-defs.svg#icon-account"></use>
+              </svg>
+            </a>
+          </li>
+          <li class="header__item">
+            <a id="cartOpenBtn" href="#">
+              <svg class="header__svg" width="24" height="24">
+                <use href="../assets/icon/symbol-defs.svg#icon-bag"></use>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- CART OVERLAY -->
+      <div class="cart-overlay" id="cartOverlay">
+        <div class="cart">
+          <div class="cart-header">
+            <h2 class="cart-header__title">Your Cart</h2>
+            <svg id="cartCloseBtn" class="header__close__svg" width="24" height="24">
+              <use href="../assets/icon/symbol-defs.svg#icon-cross"></use>
+            </svg>
+          </div>
+
+          <ul class="cart-items" id="cartItems"></ul>
+
+          <div class="cart-footer">
+            <div class="cart-total">
+              <span class="subtotal">Subtotal</span>
+              <span id="cartTotal" class="header__total">$0</span>
+            </div>
+            <button class="checkout-btn">CONTINUE TO CHECKOUT</button>
+            <p class="cart-add">Psst, get it now before it sells out.</p>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="item">
+        <div class="item__container container">
+          <ul class="item__binder">
+            <li class="item2">
+              <ul class="item__fotos">
+                <li class="item__foto">
+                  <img
+                    class="item-section__img"
+                    srcset="
+                      ../assets/img/pullover-front-1x.jpg 1x,
+                      ../assets/img/pullover-front-2x.jpg 2x
+                    "
+                    src="../assets/img/pullover-front-1x.jpg"
+                    alt="pullover on dark background"
+                  />
+                </li>
+                <li class="item__foto">
+                  <img
+                    class="item-section__img"
+                    srcset="
+                      ../assets/img/pullover-side1-1x.jpg 1x,
+                      ../assets/img/pullover-side1-2x.jpg 2x
+                    "
+                    src="../assets/img/pullover-side1-1x.jpg"
+                    alt="pullover on dark background"
+                  />
+                </li>
+                <li class="item__foto">
+                  <img
+                    class="item-section__img"
+                    srcset="
+                      ../assets/img/pullover-side2-1x.jpg 1x,
+                      ../assets/img/pullover-side2-2x.jpg 2x
+                    "
+                    src="../assets/img/pullover-side2-1x.jpg"
+                    alt="pullover on dark background"
+                  />
+                </li>
+                <li class="item__foto">
+                  <img
+                    class="item-section__img"
+                    srcset="
+                      ../assets/img/pullover-drawing-1x.jpg 1x,
+                      ../assets/img/pullover-drawing-2x.jpg 2x
+                    "
+                    src="../assets/img/pullover-drawing-1x.jpg"
+                    alt="pullover on dark background"
+                  />
+                </li>
+              </ul>
+            </li>
+            <li class="item2">
+              <ul class="item__description-list">
+                <li class="item__description-item">
+                  <h2 class="item__description__title">Shirt BLA-BLA-BLA</h2>
+                </li>
+                <li class="item__description-item">
+                  <p class="item__description__price">$238 $167</p>
+                </li>
+              </ul>
+
+              <div class="price-line"></div>
+              <p class="item__description__color">Color</p>
+              <ul class="item__color-list">
+                <li class="item__color-item">
+                  <div class="item__color1"></div>
+                </li>
+                <li class="item__color-item">
+                  <div class="item__color2"></div>
+                </li>
+              </ul>
+
+              <p class="item__description__size">Size</p>
+              <ul class="item__size-list">
+                <li class="item__size-item">
+                  <button class="item__size">XS</button>
+                </li>
+                <li class="item__size-item">
+                  <button class="item__size">S</button>
+                </li>
+                <li class="item__size-item">
+                  <button class="item__size">M</button>
+                </li>
+                <li class="item__size-item">
+                  <button class="item__size">L</button>
+                </li>
+                <li class="item__size-item">
+                  <button class="item__size">XL</button>
+                </li>
+                <li class="item__size-item">
+                  <button class="item__size">XXL</button>
+                </li>
+              </ul>
+
+              <button
+                class="item__description__buy buy-btn"
+                data-id="1"
+                data-title="The Organic Cotton Long-Sleeve Turtleneck"
+                data-price="167"
+                data-img="../assets/img/pullover-front-1x.jpg"
+              >
+                ADD TO BAG
+              </button>
+
+              <p class="item__first-description-text">
+                Part shirt, part jacket, all style.
+              </p>
+              <p class="item__main-description-text">
+                Meet your new chilly weather staple. The ReWool® Oversized Shirt
+                Jacket has all the classic shirt detailing—collar, cuffs with
+                buttons, and a shirttail hem, along with two front chest flap
+                pockets and on-seam pockets. The sleeves are fully lined for
+                added warmth and it’s made with a GRS-certified recycled Italian
+                Wool and GRS-certified recycled nylon blend. Think cozy, comfy,
+                and oh-so easy to layer.With the goal of increasing the use of
+                recycled materials and reducing the harmful impacts of
+                production, the Global Recycled Standard (GRS) sets requirements
+                for third-party certification of recycled input in
+                products—including chain of custody, social and environmental
+                practices, and chemical restrictions.
+              </p>
+
+              <ul class="size__desc-list">
+                <li class="size__desc-item">
+                  <h3 class="item__desc__model">Modell</h3>
+                </li>
+                <li class="size__desc-item">
+                  <p class="item__desc__text">Model is 6′2″, wearing a size M</p>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__container container">
+        <ul class="footer__binder-list">
+          <li class="footer__binder-item">
+            <h3 class="footerbinder-itemtitle">Account</h3>
+            <a href="./log-in.html" class="footerbinder-itemlink">Log In</a>
+            <a href="./sign-up.html" class="footerbinder-itemlink">Sign Up</a>
+          </li>
+          <li class="footer__binder-item">
+            <h3 class="footerbinder-itemtitle">Company</h3>
+            <a href="./about-us.html" class="footerbinder-itemlink">About</a>
+          </li>
+          <li class="footer__binder-item">
+            <h3 class="footerbinder-itemtitle">Connect</h3>
+            <a href="#" class="footerbinder-itemlink">Facebook</a>
+            <a href="#" class="footerbinder-itemlink">Instagram</a>
+            <a href="#" class="footerbinder-itemlink">TikTok</a>
+          </li>
+          <li class="footer__binder-item">
+            <input
+              type="text"
+              placeholder="Email Address"
+              class="footerbinder-iteminput"
+            />
+            <button class="footerbinder-itembutton">
+              <svg class="footer__arrow" width="20" height="20">
+                <use
+                  href="../assets/icon/symbol-defs.svg#icon-arrow-right"
+                ></use>
+              </svg>
+            </button>
+          </li>
+        </ul>
+        <small class="footer__small">© 2025 All Rights Reserved</small>
+      </div>
+    </footer>
+
+    <template id="productTemplate">
+      <li class="small-shop-section__item">
+        <div class="shop__overlay">
+          <img class="small-shop-sectionitemimg" src="" alt="" />
+          <div class="shop__overlay1">
+            <a href="">
+              <button class="shopoverlaybutton">VIEW PRODUCT</button>
+            </a>
+          </div>
+        </div>
+        <h3 class="small-shop-sectionitemtitle"></h3>
+      </li>
+    </template>
+
     <script src="../assets/js/main.js" type="module"></script>
     <script src="../assets/js/modal.js" type="module"></script>
-</body>
+  </body>
 </html>

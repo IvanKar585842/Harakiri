@@ -20,3 +20,6 @@ img {
 button, input, textarea {
   font: inherit;
 }
+a {
+  text-decoration: none;
+}
